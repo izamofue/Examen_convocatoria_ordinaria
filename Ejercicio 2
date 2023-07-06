@@ -1,0 +1,50 @@
+import math
+
+g_real = {
+    'Tierra': 9.8,
+    'Marte': 3.23,
+    'Jupiter': 29.72,
+    'Saturno': 9.53,
+    'Urano': 8.71,
+    'Neptuno': 11.30
+}
+
+def calcular_gravedad(L, t):
+    g = 2 * L / (t ** 2)
+    return g
+
+def calcular_error(g_exp, planeta):
+    error = abs(g_exp - g_real[planeta]) / g_real[planeta] * 100
+    return error
+
+def determinar_planeta(L, t):
+    resultados = {}
+    for planeta in g_real:
+        g_exp = calcular_gravedad(L, t)
+        error = calcular_error(g_exp, planeta)
+        resultados[planeta] = (g_exp, error)
+    return resultados
+
+L_a = 2.00
+t_a = 0.36
+
+resultados_a = determinar_planeta(L_a, t_a)
+
+print("Resultados del caso a:")
+for planeta, (g_exp, error) in resultados_a.items():
+    print(f"Planeta: {planeta}")
+    print(f"Aceleración de la gravedad experimental: {g_exp} m/s^2")
+    print(f"Error relativo porcentual: {error}%")
+    print()
+
+L_b = 1.00
+t_b = 0.36
+
+resultados_b = determinar_planeta(L_b, t_b)
+
+print("Resultados del caso b:")
+for planeta, (g_exp, error) in resultados_b.items():
+    print(f"Planeta: {planeta}")
+    print(f"Aceleración de la gravedad experimental: {g_exp} m/s^2")
+    print(f"Error relativo porcentual: {error}%")
+    print()

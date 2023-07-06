@@ -1,0 +1,34 @@
+def dollarToEuros(dollar_amount, dollar_value_euros):
+    euros_value = dollar_amount * dollar_value_euros
+    return euros_value
+
+def investmentFutureValue(capital, interest_rate, years):
+    for year in range(1, years + 1):
+        future_value = capital * (1 + interest_rate)**year
+        print(f"Año {year}: Valor futuro de la inversión = {future_value}")
+
+def investmentPresentValue(capital, interest_rate, years):
+    for year in range(1, years + 1):
+        present_value = capital / (1 + interest_rate)**year
+        print(f"Año {year}: Valor actual del capital = {present_value}")
+
+dollar_amount = 5000
+dollar_value_euros = 0.85
+euros_value = dollarToEuros(dollar_amount, dollar_value_euros)
+
+print(f"El valor en Euros de {dollar_amount} dólares es {euros_value} euros.")
+
+threshold_euros = 10000
+
+if euros_value < threshold_euros:
+    print("¡Alerta! El valor de los dólares en Euros ha caído por debajo de 10,000€.")
+
+capital = 1000
+interest_rate = 0.05
+years = 5
+
+print("\nValor futuro de la inversión cada año:")
+investmentFutureValue(capital, interest_rate, years)
+
+print("\nValor actual del capital cada año:")
+investmentPresentValue(capital, interest_rate, years)

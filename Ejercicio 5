@@ -1,0 +1,34 @@
+operaciones = []
+saldo = 0
+
+while True:
+    print("¿Qué operación desea realizar?")
+    print("1. Ingreso")
+    print("2. Reintegro")
+    print("3. Salir")
+
+    opcion = input("Ingrese el número de opción: ")
+
+    if opcion == "1":
+        cantidad = float(input("Ingrese la cantidad a ingresar: "))
+        saldo += cantidad
+        operaciones.append(cantidad)
+        print(f"Saldo actual: {saldo}")
+    elif opcion == "2":
+        cantidad = float(input("Ingrese la cantidad a reintegrar: "))
+        if cantidad <= saldo:
+            saldo -= cantidad
+            operaciones.append(-cantidad)
+            print(f"Saldo actual: {saldo}")
+        else:
+            print("No hay saldo suficiente para realizar el reintegro.")
+    elif opcion == "3":
+        break
+    else:
+        print("Opción inválida. Por favor, ingrese una opción válida.")
+
+ingresos = [cantidad for cantidad in operaciones if cantidad > 0]
+reintegros = [-cantidad for cantidad in operaciones if cantidad < 0]
+
+print("Ingresos realizados: ", ingresos)
+print("Reintegros realizados: ", reintegros)

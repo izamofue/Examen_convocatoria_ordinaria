@@ -1,0 +1,24 @@
+import random
+
+def calcular_descuento(total_unidades):
+    descuento = (total_unidades // 20) * 0.70
+    return descuento
+
+def calcular_precio_total(manzanas, caramelos):
+    precio_total = (manzanas * 3.50) + (caramelos * 0.50)
+    descuento = calcular_descuento(manzanas + caramelos)
+    precio_total -= descuento
+    return precio_total
+
+def vender_manzanas_y_caramelos():
+    manzanas_vendidas = random.randint(10, 20)
+    caramelos_vendidos = random.randint(1, 200)
+
+    precio_total = calcular_precio_total(manzanas_vendidas, caramelos_vendidos)
+
+    print("Venta realizada:")
+    print("Manzanas de caramelo vendidas:", manzanas_vendidas)
+    print("Caramelos de manzana vacíos vendidos:", caramelos_vendidos)
+    print("Precio total: €", precio_total)
+
+vender_manzanas_y_caramelos()

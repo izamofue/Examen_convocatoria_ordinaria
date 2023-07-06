@@ -1,0 +1,30 @@
+def hex_to_binary(hex_value):
+    binary_value = ""
+    for char in hex_value:
+        decimal_value = int(char, 16)
+        binary_value += format(decimal_value, '04b')
+    return binary_value
+
+def binary_to_decimal(binary_value):
+    decimal_value = 0
+    power = len(binary_value) - 1
+    for bit in binary_value:
+        decimal_value += int(bit) * (2 ** power)
+        power -= 1
+    return decimal_value
+
+def find_min_max(hex_list):
+    min_value = float('inf')
+    max_value = float('-inf')
+    for hex_value in hex_list:
+        binary_value = hex_to_binary(hex_value)
+        decimal_value = binary_to_decimal(binary_value)
+        if decimal_value < min_value:
+            min_value = decimal_value
+        if decimal_value > max_value:
+            max_value = decimal_value
+    return min_value, max_value
+
+hex_list = ['AA55', '1010', 'BEBE', '0101', '0FEA']
+
+min_value, max_value = find_min_max(hex_list)
